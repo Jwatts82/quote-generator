@@ -10,9 +10,19 @@ let apiQuotes =[]
 function newQuote() {
     // To Pick A Random Quote From apiQuotes Array
     const quote = apiQuotes[Math.floor(Math.random() * apiQuotes.length)]
-    authorText.textContent = quote.author
-    quoteText.textContent = quote.text    
+    //Check if author field is blank and replace
+    if (!quote.author) {
+        authorText.textContent = 'Unknown'
+    } else {
+        authorText.textContent = quote.author
+    }
 
+    if (quoteText.length > 50) {
+        quoteText.classList.add('long-quote')
+    } else {
+        quoteText.classList.remove('long-quotte')
+    }
+    quoteText.textContent = quote.text    
 }
 
 async function getQuotes() {
